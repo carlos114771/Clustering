@@ -35,18 +35,27 @@ def Cambiobinario():
 
 def main():
     Cambiobinario()
+    #toma los datos del csv que no tengan el target('class')
     x_train = dataTrain.drop(columns=['class'])
     x_test = dataTest.drop(columns=['class'])
+    #toma los datos del csv que si tengan el target('class')
     y_train = dataTrain['class'].values
     y_test = dataTest['class'].values
 
+    #un for para probar todos los valores de k=[1,3,5,7,9,11,13,15]
     for i in range(1,16,2):
-        #se crea el knn
+        #se crea el knn y se empiza a tomar el tiempo
         start = time.time()
         knn = KNeighborsClassifier(n_neighbors = i)
+
+        #se meten los datos para hacer el training
         knn.fit(x_train, y_train)
+
+        #se saca una prediccion para luego hacer los tests
         prediction = knn.predict(x_test)
         end = time.time()
+
+        #imprime los valores pedidos mandadoles el y_test donde esta el target=('class')
         print("K=",i)
         print("Accuracy total:", metrics.accuracy_score(y_test, prediction))
         print("Recall:", metrics.recall_score(y_test, prediction,average='macro'))
