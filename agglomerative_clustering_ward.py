@@ -7,7 +7,7 @@ import sys
 def agglomerative_clustering(data, num):
     labels = [1,2,3,4,5]
     for x in range(1, 6):
-        path = './plots/agglomerative clustering (ward)/agglomerative'
+        path = './resultados/agglomerative clustering (ward)/agglomerative'
         a = AgglomerativeClustering(linkage = 'ward', n_clusters = x).fit(data)
         scatter = plt.scatter(data[:,0], data[:,1], c=a.labels_, cmap='Accent')
         plt.legend(handles=scatter.legend_elements()[0], labels = labels)
@@ -20,7 +20,7 @@ def agglomerative_clustering_distance(data, num):
     labels = [1,2,3,4,5]
     distance = [0.25, 0.50, 0.75, 1.0, 1.5]
     for x in distance:
-        path = './plots/agglomerative clustering (ward)/agglomerative'
+        path = './resultados/agglomerative clustering (ward)/agglomerative'
         a = AgglomerativeClustering(linkage = 'ward', n_clusters = None, distance_threshold=x).fit(data)
         scatter = plt.scatter(data[:,0], data[:,0], c=a.labels_, cmap='Accent')
         plt.legend(handles=scatter.legend_elements()[0], labels = labels)

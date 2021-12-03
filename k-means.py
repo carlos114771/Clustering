@@ -7,7 +7,7 @@ import sys
 def K_means(data, num):
     labels = [1,2,3,4,5]
     for x in range(1, 6):
-        path = './plots/k-means/k-means'
+        path = './resultados/k-means/k-means'
         kmeans = KMeans(n_clusters=x).fit(data)
         scatter = plt.scatter(data[:,0], data[:,1], c=kmeans.labels_, cmap='Accent')
         plt.legend(handles=scatter.legend_elements()[0], labels = labels)
