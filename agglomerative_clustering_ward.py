@@ -5,15 +5,14 @@ import sys
 
 
 def agglomerative_clustering(data, num):
-    labels = [1,2,3,4,5]
-    for x in range(1, 6):
-        path = './resultados/agglomerative clustering (ward)/agglomerative'
-        a = AgglomerativeClustering(linkage = 'ward', n_clusters = x).fit(data)
-        scatter = plt.scatter(data[:,0], data[:,1], c=a.labels_, cmap='Accent')
-        plt.legend(handles=scatter.legend_elements()[0], labels = labels)
-        plt.title("agglomerative clustering with Ward Linkage")
-        path += '_cluster_' + str(x) + '_dataset_' + str(num) + '.png'
-        plt.savefig(path)
+    path = './plots/agglomerative clustering (ward)/agglomerative'
+    agglomerative = AgglomerativeClustering(n_clusters=6)
+    agglomerative.fit(datos)
+    scatter=plt.scatter(datos['x'], datos['y'], c=agglomerative.labels_, cmap='rainbow')
+    labels=[0,1,2,3,4]
+    plt.legend(handles=scatter.legend_elements()[0],labels=labels)
+    plt.title("Agglomerative")
+    plt.show()
 
 
 def agglomerative_clustering_distance(data, num):
@@ -30,6 +29,7 @@ def agglomerative_clustering_distance(data, num):
 
 
 def main(path, n):
+#recibe de consola el path del dataset 
     data = np.genfromtxt(path, delimiter=',', skip_header=1)
     agglomerative_clustering(data, n)
     agglomerative_clustering_distance(data, n)

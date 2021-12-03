@@ -17,6 +17,7 @@ def K_means(data, num):
 
 
 def main(path, n):
+#recibe de consola el path del dataset 
     data = np.genfromtxt(path, delimiter=',', skip_header=1)
     K_means(data, n)
 

@@ -33,6 +33,7 @@ def dbscan(data, num):
         plt.savefig(path)
 
 def main(path, n):
+#recibe de consola el path del dataset 
     data = np.genfromtxt(path, delimiter=',', skip_header=1)
     dbscan(data, n)
 
